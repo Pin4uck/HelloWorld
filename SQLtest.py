@@ -17,6 +17,6 @@ with open('currency.csv', 'rt') as infile:
 
 
 curs.execute('''SELECT Rate FROM ccy 
-WHERE Abbreviation = 'USD' ''')
+WHERE Abbreviation = {} '''.format(input()))
 row = curs.fetchall()
 print(row[0][0])
