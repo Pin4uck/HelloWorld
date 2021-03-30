@@ -28,13 +28,13 @@ def inquiry(s):
 
     conn.commit()  # завершаем сессию, не уверен что нужно здесь
     curs.execute('''SELECT Rate FROM ccy 
-                    WHERE Abbreviation = {} '''.format(abbr))  # делаем запрос в таблицу БД
+                    WHERE Abbreviation = {} '''.format(s))  # делаем запрос в таблицу БД
     row = curs.fetchall()  # сохраняем данные в переменной
     if row:  # если нет в таблице значения - делаем действия ниже:
         print('проверка(обновленное значение)')
         return row
     curs.execute('''SELECT Rate FROM ccy 
-                    WHERE Abbreviation = {} '''.format(abbr))
+                    WHERE Abbreviation = {} '''.format(s))
     row2 = curs.fetchall()
     if row2:
         print('проверка(необновленное значение)')
