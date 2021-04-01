@@ -26,7 +26,7 @@ def inquiry(s):
     curs.execute(f'''INSERT INTO ccy VALUES({idd}, {abbr}, {ofcrate}, strftime("%s"))  
                     on conflict (id) do update set Rate=excluded.Rate, last_updated = excluded.last_updated''')  # вносим 3 строки значений, так же исключаем ограничение и обновляем записи в строке если вышло время обновления
 
-    conn.commit()  # завершаем сессию, не уверен что нужно здесь
+    conn.commit()
     curs.execute('''SELECT Rate FROM ccy 
                     WHERE Abbreviation = {} '''.format(s))  # делаем запрос в таблицу БД
     row = curs.fetchall()  # сохраняем данные в переменной
